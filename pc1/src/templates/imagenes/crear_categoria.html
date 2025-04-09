@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Categoría{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Crear Nueva Categoría</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" class="mb-4">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="id_nombre" class="form-label">Nombre de la categoría:</label>
+                {{ form.nombre.errors }}
+                <input type="text" name="nombre" id="id_nombre" class="form-control" required>
+            </div>
+            
+            <button type="submit" class="btn btn-success">Crear Categoría</button>
+            <a href="{% url 'categorias' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

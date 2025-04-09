@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Categoría: {{ categoria.nombre }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Categoría: {{ categoria.nombre }}</h1>
+
+{% if imagenes %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for imagen in imagenes %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ imagen.archivo.url }}" class="card-img-top" alt="{{ imagen.titulo }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ imagen.titulo }}</h5>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Subida por {{ imagen.usuario.username }} el {{ imagen.fecha_subida|date:"d/m/Y" }}
+                        </small>
+                    </p>
+                    <a href="{% url 'detalle_imagen' imagen.pk %}" class="btn btn-primary">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="alert alert-info">
+        No hay imágenes en esta categoría.
+    </div>
+{% endif %}
+
+<div class="mt-4">
+    <a href="{% url 'categorias' %}" class="btn btn-secondary">Volver a categorías</a>
+</div>
+{% endblock %}

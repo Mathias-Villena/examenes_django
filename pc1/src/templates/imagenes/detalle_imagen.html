@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ imagen.titulo }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <img src="{{ imagen.archivo.url }}" class="img-fluid rounded" alt="{{ imagen.titulo }}">
+    </div>
+    <div class="col-md-4">
+        <h1>{{ imagen.titulo }}</h1>
+        
+        <p class="text-muted">
+            Subida por {{ imagen.usuario.username }} el {{ imagen.fecha_subida|date:"d/m/Y H:i" }}
+        </p>
+        
+        <p>
+            <strong>Categoría:</strong> 
+            <a href="{% url 'imagenes_por_categoria' imagen.categoria.slug %}">
+                {{ imagen.categoria.nombre }}
+            </a>
+        </p>
+        
+        {% if imagen.descripcion %}
+        <h4>Descripción:</h4>
+        <p>{{ imagen.descripcion }}</p>
+        {% endif %}
+        
+        {% if user.is_authenticated and user == imagen.usuario %}
+        <div class="mt-4">
+            <a href="{% url 'eliminar_imagen' imagen.pk %}" class="btn btn-danger">Eliminar imagen</a>
+        </div>
+        {% endif %}
+        
+        <div class="mt-4">
+            <a href="{% url 'lista_imagenes' %}" class="btn btn-secondary">Volver a la galería</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

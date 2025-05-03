@@ -21,6 +21,6 @@ class Imagen(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='imagenes')
     fecha_subida = models.DateTimeField(auto_now_add=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='imagenes')
-    
+    visualizaciones = models.PositiveIntegerField(default=0)  # Nuevo campo
     def __str__(self):
         return self.titulo

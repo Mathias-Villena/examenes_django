@@ -9,7 +9,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Imagen)
 class ImagenAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'categoria', 'usuario', 'fecha_subida')
+    list_display = ('titulo', 'categoria', 'usuario', 'fecha_subida','visualizaciones')
     list_filter = ('categoria', 'fecha_subida', 'usuario')
     search_fields = ('titulo', 'descripcion')
     date_hierarchy = 'fecha_subida'

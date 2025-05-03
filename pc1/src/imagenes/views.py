@@ -10,6 +10,8 @@ def lista_imagenes(request):
 
 def detalle_imagen(request, pk):
     imagen = get_object_or_404(Imagen, pk=pk)
+    imagen.visualizaciones += 1  # Incrementa el contador
+    imagen.save()  # Guarda el cambio
     return render(request, 'imagenes/detalle_imagen.html', {'imagen': imagen})
 
 @login_required

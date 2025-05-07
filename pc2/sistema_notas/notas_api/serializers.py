@@ -10,7 +10,7 @@ class CarpetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Carpeta
         fields = ['id', 'nombre', 'descripcion', 'fecha_creacion']
-        read_only_fields = ['usuario']
+        read_only_fields = ['fecha_creacion']
 
 class NotaSerializer(serializers.ModelSerializer):
     etiquetas = EtiquetaSerializer(many=True, read_only=True)

@@ -1,0 +1,385 @@
+/* Variables de color */
+:root {
+    --primary-color: #9b59b6; /* Morado principal */
+    --secondary-color: #8e44ad; /* Morado oscuro */
+    --accent-color: #d2b4de; /* Morado claro */
+    --dark-color: #2c3e50;
+    --light-color: #f8f0fc;
+    --gradient-1: linear-gradient(135deg, #9b59b6, #d2b4de); /* Gradiente morado */
+    --gradient-2: linear-gradient(45deg, #8e44ad, #6c3483); /* Gradiente morado oscuro */
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-1); /* Cambia al gradiente morado */
+    color: var(--dark-color);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+/* Animación de corazones en el fondo */
+.hearts-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    opacity: 0.2;
+    transform: rotate(45deg);
+    animation: floatingHeart 15s infinite linear;
+}
+
+.heart:before,
+.heart:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart:before {
+    top: -10px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -10px;
+}
+
+@keyframes floatingHeart {
+    0% {
+        transform: rotate(45deg) translateY(0) rotate(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: rotate(45deg) translateY(-1000px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Posicionamiento de corazones */
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 3s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 6s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 9s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 12s; }
+
+/* Navbar con efecto cristal */
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.navbar-brand {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--primary-color) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh; /* Asegúrate de que ocupe toda la altura de la ventana */
+}
+
+.romantic-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.main-content {
+    min-height: 70vh;
+    padding: 2rem 0;
+}
+
+/* Secciones */
+.section-container {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.section-container.active {
+    display: block;
+}
+
+/* Tarjetas de citas */
+.quote-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.quote-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient-1);
+}
+
+.quote-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.quote-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--dark-color);
+    line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
+}
+
+.quote-text:before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+}
+
+.quote-author {
+    color: #717171;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+/* Reproductor de audio personalizado */
+.custom-audio-player {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.song-info {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.play-btn {
+    background: var(--gradient-1);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.progress {
+    background: var(--gradient-1);
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.1s linear;
+}
+
+.time {
+    min-width: 45px;
+    text-align: right;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Formularios */
+.form-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.25);
+}
+
+/* Botones */
+.btn {
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    border: none;
+    background: var(--gradient-1);
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3); /* Ajusta el color del sombreado */
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+}
+
+.btn-success {
+    border: none;
+    background: var(--gradient-2);
+    box-shadow: 0 5px 15px rgba(142, 68, 173, 0.3); /* Ajusta el color del sombreado */
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
+}
+
+/* Footer */
+.footer {
+    background: var(--gradient-2);
+    color: white;
+    padding: 4rem 0 2rem;
+    margin-top: 6rem;
+    position: relative;
+}
+
+.heart-border {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") repeat-x;
+    background-size: contain;
+}
+
+.social-links a {
+    color: white;
+    margin-left: 20px;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.quote-card:hover .quote-text {
+    animation: pulse 1s infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .romantic-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-section {
+        padding: 4rem 0;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+}
+/* Ajustar el espaciado del título de las tarjetas */
+.card-title {
+    margin-bottom: 0.5rem; /* Reduce el margen inferior del título */
+    font-size: 1.5rem; /* Ajusta el tamaño del título si es necesario */
+    text-align: center; /* Centra el título */
+}
+
+/* Ajustar el espaciado dentro de las tarjetas */
+.card-body {
+    padding-top: 0.5rem; /* Reduce el espacio superior dentro del formulario */
+}
+
+/* Reducir el margen entre los campos del formulario */
+.form-control, .form-label, .btn {
+    margin-bottom: 0.5rem; /* Reduce el margen entre los elementos */
+}
